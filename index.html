@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>MGame</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/my.css">
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				var webview = plus.webview.currentWebview();
+				plus.key.addEventListener('backbutton', function() {
+					webview.canBack(function(e) {
+
+						//webview.close(); //hide,quit
+						//plus.runtime.quit();
+						//首页返回键处理
+						//处理逻辑：1秒内，连续两次按返回键，则退出应用；
+						var first = null;
+						plus.key.addEventListener('backbutton', function() {
+							//首次按键，提示‘再按一次退出应用’
+							if (!first) {
+								first = new Date().getTime();
+								console.log('再按一次退出应用');
+								setTimeout(function() {
+									first = null;
+								}, 1000);
+							} else {
+								if (new Date().getTime() - first < 1500) {
+									plus.runtime.quit();
+								}
+							}
+						}, false);
+
+					})
+				});
+			});
+		</script>
+		<!-- <script type="text/javascript" src="functions.js"></script> -->
+	</head>
+
+	<body class="backgroundjgp" style="background-image: url(src/bg.png);">
+		
+		<div style="height: 80px;">
+			<hr style="visibility: hidden;">
+			<div class="text-center">
+				<h1 class="flash" style="color: #5BC0DE;">MGame</h1>
+			</div>
+
+		</div>
+		<div style="height: 250px;">
+
+		</div>
+
+		<div class="row">
+			<h3 class="text-center" style="color: mediumaquamarine ;">点击启动飞船~~</h1>
+				<div class="text-center">
+					<input class="flash" type="image" src="src/start.png"
+						onclick="window.location.href='login_page.html'">
+				</div>
+		</div>
+	</body>
+</html>

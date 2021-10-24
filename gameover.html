@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+	<script type="text/javascript" src="tools.js"></script>
+	<script type="text/javascript">
+		var Username = localStorage["username"];
+		var MaxScore = getCookie('score');
+		var Score = localStorage["score"];
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>BootStrap Test</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/my.css">
+		<script type="text/javascript" src="jquery/jquery.min.js"></script>
+		<script type = "text/javascript" >
+			document.addEventListener('plusready', function() {
+				//var webview = plus.webview.currentWebview();
+				plus.key.addEventListener('backbutton', function() {
+					window.location.href="game.html";
+				});
+			});
+		</script>
+		<!-- <script type="text/javascript" src="functions.js"></script> -->
+
+	</head>
+
+	<body class="backgroundjgp" style="background-image: url(src/bg.png);">
+	
+		<div style="height: 80px;">
+			<hr style="visibility: hidden;">
+			<div class="text-center">
+				<h1 style="color: #5BC0DE;">MGame</h1>
+			</div>
+		</div>
+		<div style="height: 400px;">
+			<h2 class="text-center" style="color: greenyellow;"> 本次分数 </h2>
+			<hr style="visibility: hidden;" />
+			<p id='score_p' class="text-warning text-center" style="font-size: 72;">
+				<script type="text/javascript">
+					document.write(Score);
+				</script>
+			</p>
+
+		</div>
+		<div class='row text-center'>
+			<a href="game/plane/index.html" class="btn btn-info btn-lg"
+				style="width: 210px;height: 60px;font-size:28"> 再玩一次 </a>
+		</div>
+		<hr style="visibility: hidden;">
+		<!-- 		<form action='update' id='update_form' method='get'>
+			<input type="text" style="visibility: hidden;" id="username_input" value="" />
+			<input type="text" style="visibility: hidden;" id="score_input" value="" /> -->
+		<div class='row text-center'>
+			<button id="update_rank" class="btn btn-info btn-lg"
+				style="width: 210px;height: 60px;font-size: 28;">上传分数</button>
+		</div>
+		<!-- 		</form> -->
+
+
+		<script>
+			$(document).ready(function() {
+				$("button").click(function() {
+					if (parseInt(MaxScore) < parseInt(Score)) {
+						MaxScore = Score;
+						window.localStorage.maxscore = Score;
+					} else {
+						alert('本次分数为低于记录分数，请再接再厉！');
+						return;
+					}
+
+
+					$.post("update", {
+							username: Username,
+							score: MaxScore
+						},
+						function(data, status) {
+							alert('上传成功！');
+						});
+				});
+			});
+		</script>
+
+	</body>
+</html>

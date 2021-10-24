@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+	<script type="text/javascript" src="tools.js"></script>
+	<script type="text/javascript">
+		var Rank_data = getCookie('rank_data');
+		var data = Rank_data.split('$');
+		var users = [];
+		var i = 0;
+		while (data[i] && i < 15) {
+			users.push(data[i].split('#'));
+			if (i == 14) {
+				break;
+			}
+			i++;
+		}
+		while (i < 15) {
+			users.push(['null', 0]);
+			i++;
+		}
+
+		var writeAll = function(data) {
+			for (var j = 0; j < 15; j++) {
+				document.write("<tr><td>" + (j + 1).toString() +
+					"</td><td>" + data[j][0] +
+					"</td><td>" + data[j][1] +
+					"</td></tr>");
+			}
+		}
+	</script>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>BootStrap Test</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/my.css">
+		<!-- <script type="text/javascript" src="functions.js"></script> -->
+		<script type = "text/javascript" >
+			document.addEventListener('plusready', function() {
+				//var webview = plus.webview.currentWebview();
+				plus.key.addEventListener('backbutton', function() {
+					window.location.href="game.html";
+				});
+			});
+		</script>
+	</head>
+
+	<body class="backgroundjgp" style="background-image: url(src/bg.png);">
+		
+		<div class="container-fluid">
+			<div class="panel panel-default">
+				<div class="panel-heading">世界排名（前十五）</div>
+				<div class="panel-body" ">
+					<table class=" table">
+					<tr>
+						<th>名次</th>
+						<th>用户名</th>
+						<th>分数</th>
+					</tr>
+					<script type="text/javascript">
+						writeAll(users);
+					</script>
+
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+
+	</body>
+</html>

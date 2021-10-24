@@ -1,0 +1,44 @@
+.backgroundjgp {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+	zoom: 1;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-position: center 0;
+}
+
+
+
+.flash {
+	animation: fadeInAnimation ease 3s;
+	animation-iteration-count: 20;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+		/*设置不透明度*/
+	}
+	25%{
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	
+	75% {
+		opacity: 0.5;
+	}
+	
+	100%{
+		opacity: 0;
+	}
+}

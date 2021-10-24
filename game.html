@@ -1,0 +1,80 @@
+<!DOCTYPE>
+<html>
+	<script type="text/javascript" src="tools.js"></script>
+	
+	<script type="text/javascript">
+		var Username = '';
+		var Score = '';
+		
+		Username = getCookie('username');
+		Score = getCookie('score');
+		if (window.localStorage) {
+			//存储变量的值
+			localStorage.username = Username;
+			localStorage.maxscore = Score;
+		} else {
+			alert("NOT SUPPORT");
+		}
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>BootStrap Test</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/my.css">
+		<script type = "text/javascript" >
+			document.addEventListener('plusready', function() {
+				//var webview = plus.webview.currentWebview();
+				plus.key.addEventListener('backbutton', function() {
+					window.location.href="login_page.html";
+				});
+			});
+		</script>
+		<!-- <script type="text/javascript" src="functions.js"></script> -->
+
+	</head>
+
+	<body class="backgroundjgp" style="background-image: url(src/bg.png);">
+
+		<div style="height: 80px;">
+			<hr style="visibility: hidden;">
+			<div class="text-center">
+				<h1 style="color: #5BC0DE;">MGame</h1>
+			</div>
+		</div>
+		<div style="height: 400px;">
+			<h2 class="text-center" style="color: greenyellow;"> 你的分数 </h2>
+			<p class="text-lowercase text-center" style="color: grey;">分数显示可能有延迟</p>
+			<hr style="visibility: hidden;" />
+			<p id='score_p' class="text-warning text-center" style="font-size: 72;">
+				<script type="text/javascript">
+					document.write(Score);
+				</script>
+			</p>
+			<h2 class="text-center text-capitalize" style="color: greenyellow;">亲爱的船长：</h2>
+			<p id='username_p' class="text-center text-danger" style="font-size: 72;">
+				<script type="text/javascript">
+					document.write(Username);
+				</script>
+			</p>
+		</div>
+		<div class='row text-center'>
+			<!-- <a href="game/accepts/game/index.html" class="btn btn-info btn-lg"
+				style="width: 210px;height: 60px;font-size:28"> 开始游戏 </a> -->
+			<a href="game/plane/index.html" class="btn btn-info btn-lg"
+				style="width: 210px;height: 60px;font-size:28"> 开始游戏 </a>
+		</div>
+		<hr style="visibility: hidden;">
+		<div class='row text-center'>
+			<form action="get_rank" method="get">
+				<button type="submit" value="" /class="btn btn-info btn-lg"
+					style="width: 210px;height: 60px;font-size: 28;"> 排行榜 </button>
+			</form>
+
+		</div>
+
+
+	</body>
+</html>

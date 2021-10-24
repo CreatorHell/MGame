@@ -1,0 +1,91 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<title>BootStrap Test</title>
+
+
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/my.css">
+		<script type="text/javascript" src="jquery/jquery.min.js">
+
+		</script>
+		<script type = "text/javascript" >
+			document.addEventListener('plusready', function() {
+				//var webview = plus.webview.currentWebview();
+				plus.key.addEventListener('backbutton', function() {
+					window.location.href="login_page.html";
+				});
+			});
+		</script>
+	</head>
+
+	<body class="backgroundjgp" style="background-image: url(src/bg.png);">
+		<div style="height: 100px;">
+			
+		</div>
+		<div style="height: 80px;">
+			<hr style="visibility: hidden;">
+			<div class="text-center">
+				<h1 style="color: #5BC0DE;">MGame</h1>
+			</div>
+		</div>
+		<div class="container" style=";">
+			<form id='form_login' action="reg" name="form-ex" method="get">
+				<hr style="visibility: hidden;">
+				<div class="row">
+					<div class="col-xs-10 col-xs-push-1">
+						<input type="text" class="form-control" name='username' placeholder="用户名">
+					</div>
+				</div>
+				<hr style="visibility: hidden;">
+				<div class="row">
+					<div class="col-xs-10 col-xs-push-1">
+						<input id="pwd1" type="password" class="form-control" name='password1' placeholder="密码">
+					</div>
+				</div>
+				<hr style="visibility: hidden;">
+				<div class="row">
+					<div class="col-xs-10 col-xs-push-1">
+						<input id="pwd2" type="password" class="form-control" name='password2' placeholder="重复输入密码">
+					</div>
+				</div>
+				<hr style="visibility: hidden;">
+				<div class="form-group">
+					<hr style="visibility: hidden;">
+					<div class="row">
+						<div class="col-xs-1 col-xs-push-2">
+							<button id="btn_reg" type="button" class="btn btn-info btn-lg" onclick="checkPassword();"
+								style="height: auto;width: 210px;">注册</button>
+
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- <div class="container" style=";">
+			<div class="row">
+				<div class="col-xs-1" style="background-color: pink;">Menu</div>
+				<div class="col-xs-1 col-xs-push-11" style="background-color: blue;">User</div>
+			</div>
+		</div> -->
+
+		<script>
+			function checkPassword() {
+				var p1 = document.getElementById("pwd1").value;
+				var p2 = document.getElementById("pwd2").value;
+				var form_reg = document.getElementById("form_login");
+				if (p1 == p2) {
+					form_reg.submit();
+				} else {
+					alert("两次输入的密码不一致");
+				}
+			}
+		</script>
+
+	</body>
+</html>
